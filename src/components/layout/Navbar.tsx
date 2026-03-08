@@ -1,0 +1,118 @@
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Sparkles, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+const navLinks = [
+  { label: "Events", href: "/events" },
+  { label: "Jobs", href: "/jobs" },
+  { label: "Learning", href: "/learning" },
+  { label: "Games", href: "/games" },
+  { label: "Blog", href: "/blog" },
+  { label: "Mentorship", href: "/mentorship" },
+];
+
+const Navbar = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 glass">
+      <div className="container flex h-16 items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2 group">
+          <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-hero">
+            <Sparkles className="h-5 w-5 text-primary-foreground" />
+            <div className="absolute inset-0 rounded-xl bg-gradient-hero opacity-0 blur-lg transition-opacity group-hover:opacity-60" />
+          </div>
+          <span className="font-display text-xl font-bold tracking-tight">
+            AITD <span className="text-gradient">Events</span>
+          </span>
+        </Link>
+
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-1 md:flex">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              to={link.href}
+              className={cn(
+                "relative px-3 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-muted",
+                location.pathname === link.href
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              {link.label}
+              {location.pathname === link.href && (
+                <motion.div
+                  layoutId="navbar-indicator"
+                  className="absolute bottom-0 left-1/2 h-0.5 w-6 -translate-x-1/2 rounded-full bg-gradient-hero"
+                />
+              )}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Desktop actions */}
+        <div className="hidden items-center gap-3 md:flex">
+          <Link to="/auth">
+            <Button variant="ghost" size="sm">Sign In</Button>
+          </Link>
+          <Link to="/auth">
+            <Button size="sm" className="bg-gradient-hero text-primary-foreground hover:opacity-90 shadow-elegant">
+              Get Started
+            </Button>
+          </Link>
+        </div>
+
+        {/* Mobile menu button */}
+        <button
+          className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-muted md:hidden"
+          onClick={() => setMobileOpen(!mobileOpen)}
+        >
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      {/* Mobile nav */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="overflow-hidden border-t border-border md:hidden"
+          >
+            <div className="container space-y-1 py-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={cn(
+                    "block rounded-lg px-4 py-3 text-sm font-medium transition-colors",
+                    location.pathname === link.href
+                      ? "bg-primary/10 text-primary"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <div className="pt-3 space-y-2">
+                <Link to="/auth" onClick={() => setMobileOpen(false)}>
+                  <Button className="w-full bg-gradient-hero text-primary-foreground">Get Started</Button>
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+};
+
+export default Navbar;
