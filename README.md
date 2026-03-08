@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 AITD Events Platform
+# 🚀 AITDEvents Platform
 
 ### India's Largest Student Opportunity Hub
 
@@ -599,3 +599,4 @@ If you find this project useful, please consider giving it a star on GitHub! It 
 [Website](https://aitd.events) • [GitHub](https://github.com/Piyushsahu99/aitdvents) • [Support](mailto:support@aitd.events)
 
 </div>
+
