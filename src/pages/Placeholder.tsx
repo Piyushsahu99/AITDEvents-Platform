@@ -28,6 +28,6 @@ export const Scholarships = () => <PlaceholderPage title="Scholarships" descript
 export const Bounties = () => <PlaceholderPage title="Bounties & Rewards" description="Solve technical challenges and earn rewards. Coming soon!" />;
 export const About = () => <PlaceholderPage title="About AITD Events" description="India's largest student opportunity hub. Coming soon!" />;
 export const Contact = () => <PlaceholderPage title="Contact Us" description="Get in touch with the AITD Events team. Coming soon!" />;
-export const Auth = () => <PlaceholderPage title="Sign In / Sign Up" description="Create your account to unlock all features. Coming soon!" />;
+
 export const Leaderboard = () => <PlaceholderPage title="Leaderboard" description="Compete and climb the global rankings. Coming soon!" />;
 export const Ambassador = () => <PlaceholderPage title="Campus Ambassador" description="Join the ambassador program and lead on campus. Coming soon!" />;
