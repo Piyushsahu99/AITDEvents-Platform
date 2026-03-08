@@ -18,7 +18,7 @@ const PlaceholderPage = ({ title, description }: PlaceholderPageProps) => (
   </Layout>
 );
 
-export const Events = () => <PlaceholderPage title="Events & Hackathons" description="Discover 500+ competitions, workshops, and webinars. Coming soon!" />;
+
 export const Jobs = () => <PlaceholderPage title="Jobs & Internships" description="Access 1000+ opportunities from top companies. Coming soon!" />;
 export const Learning = () => <PlaceholderPage title="Learning Hub" description="200+ courses, study materials, and practice resources. Coming soon!" />;
 export const Games = () => <PlaceholderPage title="Interactive Games" description="IPL Auction, quizzes, and more. Earn coins while having fun! Coming soon!" />;
