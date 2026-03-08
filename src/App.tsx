@@ -5,8 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import Events from "./pages/Events";
 import {
-  Events, Jobs, Learning, Games, Blog, Mentorship,
+  Jobs, Learning, Games, Blog, Mentorship,
   Scholarships, Bounties, About, Contact, Auth,
   Leaderboard, Ambassador,
 } from "./pages/Placeholder";
