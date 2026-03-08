@@ -13,9 +13,10 @@ import AdminJobs from "./pages/admin/AdminJobs";
 import AdminBlog from "./pages/admin/AdminBlog";
 import AdminGames from "./pages/admin/AdminGames";
 import AdminUsers from "./pages/admin/AdminUsers";
+import Auth from "./pages/Auth";
 import {
   Learning, Games, Blog, Mentorship,
-  Scholarships, Bounties, About, Contact, Auth,
+  Scholarships, Bounties, About, Contact,
   Leaderboard, Ambassador,
 } from "./pages/Placeholder";
 
