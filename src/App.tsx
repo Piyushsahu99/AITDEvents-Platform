@@ -6,6 +6,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Events from "./pages/Events";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminEvents from "./pages/admin/AdminEvents";
+import AdminJobs from "./pages/admin/AdminJobs";
+import AdminBlog from "./pages/admin/AdminBlog";
+import AdminGames from "./pages/admin/AdminGames";
+import AdminUsers from "./pages/admin/AdminUsers";
 import {
   Jobs, Learning, Games, Blog, Mentorship,
   Scholarships, Bounties, About, Contact, Auth,
