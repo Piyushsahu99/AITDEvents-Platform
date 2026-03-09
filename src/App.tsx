@@ -24,6 +24,10 @@ import Learning from "./pages/Learning";
 import GamesPage from "./pages/Games";
 import Mentorship from "./pages/Mentorship";
 import About from "./pages/About";
+import Community from "./pages/Community";
+import CommunityGroup from "./pages/CommunityGroup";
+import CommunityMessages from "./pages/CommunityMessages";
+import CommunityFeed from "./pages/CommunityFeed";
 import {
   Scholarships, Bounties, Contact,
   Leaderboard, Ambassador,
