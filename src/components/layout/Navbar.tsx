@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sparkles, LogOut, UserIcon, LayoutDashboard } from "lucide-react";
+import { Menu, X, LogOut, UserIcon, LayoutDashboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -17,6 +17,23 @@ const navLinks = [
   { label: "Blog", href: "/blog" },
   { label: "Mentorship", href: "/mentorship" },
 ];
+
+const Logo = () => (
+  <Link to="/" className="flex items-center gap-2.5 group">
+    <div className="relative flex h-10 w-10 items-center justify-center">
+      {/* Layered gradient shapes */}
+      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary via-accent to-primary-glow rotate-6 opacity-80 group-hover:rotate-12 transition-transform duration-300" />
+      <div className="absolute inset-0 rounded-xl bg-gradient-hero group-hover:scale-105 transition-transform duration-300" />
+      <span className="relative font-display text-base font-black text-primary-foreground tracking-tighter leading-none">A</span>
+      {/* Glow on hover */}
+      <div className="absolute inset-0 rounded-xl bg-gradient-hero opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-50" />
+    </div>
+    <div className="flex flex-col leading-none">
+      <span className="font-display text-lg sm:text-xl font-extrabold tracking-tight">AITD</span>
+      <span className="text-gradient font-display text-[0.65rem] sm:text-xs font-bold tracking-widest uppercase">Events</span>
+    </div>
+  </Link>
+);
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -43,26 +60,17 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass">
-      <div className="container flex h-16 items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-hero">
-            <Sparkles className="h-5 w-5 text-primary-foreground" />
-            <div className="absolute inset-0 rounded-xl bg-gradient-hero opacity-0 blur-lg transition-opacity group-hover:opacity-60" />
-          </div>
-          <span className="font-display text-xl font-bold tracking-tight">
-            AITD <span className="text-gradient">Events</span>
-          </span>
-        </Link>
+      <div className="container flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Logo />
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-1 md:flex">
+        {/* Desktop nav — visible from lg (1024px) */}
+        <nav className="hidden items-center gap-0.5 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               to={link.href}
               className={cn(
-                "relative px-3 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-muted",
+                "relative px-2.5 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-muted",
                 location.pathname === link.href
                   ? "text-primary"
                   : "text-muted-foreground hover:text-foreground"
@@ -79,8 +87,8 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* Desktop actions */}
-        <div className="hidden items-center gap-3 md:flex">
+        {/* Desktop actions — visible from lg */}
+        <div className="hidden items-center gap-3 lg:flex">
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -132,9 +140,9 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile menu button — visible below lg */}
         <button
-          className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-muted md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-muted lg:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -148,9 +156,9 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-t border-border md:hidden"
+            className="overflow-hidden border-t border-border lg:hidden"
           >
-            <div className="container space-y-1 py-4">
+            <div className="container space-y-1 py-4 px-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -166,6 +174,18 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
+              <Link
+                to="/about"
+                onClick={() => setMobileOpen(false)}
+                className={cn(
+                  "block rounded-lg px-4 py-3 text-sm font-medium transition-colors",
+                  location.pathname === "/about"
+                    ? "bg-primary/10 text-primary"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                )}
+              >
+                About
+              </Link>
               <div className="pt-3 space-y-2">
                 {user ? (
                   <>

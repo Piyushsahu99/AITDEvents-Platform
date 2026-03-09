@@ -50,7 +50,7 @@ const About = () => (
 
         {/* Stats */}
         <AnimatedSection delay={0.1}>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-16">
             {stats.map((stat) => (
               <Card key={stat.label} className="text-center">
                 <CardContent className="pt-6">
@@ -65,7 +65,7 @@ const About = () => (
 
         {/* Mission */}
         <AnimatedSection delay={0.15}>
-          <div className="grid md:grid-cols-2 gap-10 items-center mb-16">
+          <div className="grid gap-8 md:gap-10 md:grid-cols-2 items-center mb-16">
             <div>
               <Badge className="mb-3 bg-amber-500/10 text-amber-600 border-amber-500/20">
                 <Target className="h-3 w-3 mr-1" /> Our Mission
@@ -90,7 +90,7 @@ const About = () => (
                 </Link>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {values.map((val) => (
                 <Card key={val.title} className="hover:shadow-lg transition-shadow">
                   <CardContent className="pt-6 text-center">
