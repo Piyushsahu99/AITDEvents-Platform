@@ -17,9 +17,12 @@ import Auth from "./pages/Auth";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import Profile from "./pages/Profile";
+import Learning from "./pages/Learning";
+import GamesPage from "./pages/Games";
+import Mentorship from "./pages/Mentorship";
+import About from "./pages/About";
 import {
-  Learning, Games, Mentorship,
-  Scholarships, Bounties, About, Contact,
+  Scholarships, Bounties, Contact,
   Leaderboard, Ambassador,
 } from "./pages/Placeholder";
 
@@ -42,7 +45,7 @@ const App = () => (
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/learning" element={<Learning />} />
-          <Route path="/games" element={<Games />} />
+          <Route path="/games" element={<GamesPage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/mentorship" element={<Mentorship />} />
