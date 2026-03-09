@@ -20,12 +20,20 @@ const navLinks = [
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [profileName, setProfileName] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  const initials = user?.user_metadata?.full_name
-    ? user.user_metadata.full_name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2)
+  useEffect(() => {
+    if (!user) { setProfileName(null); return; }
+    supabase.from("profiles").select("full_name").eq("id", user.id).single()
+      .then(({ data }) => setProfileName(data?.full_name ?? null));
+  }, [user]);
+
+  const displayName = profileName || user?.user_metadata?.full_name || null;
+  const initials = displayName
+    ? displayName.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2)
     : user?.email?.[0]?.toUpperCase() ?? "U";
 
   const handleSignOut = async () => {
