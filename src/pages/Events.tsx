@@ -5,7 +5,8 @@ import { toast } from "@/hooks/use-toast";
 import Layout from "@/components/layout/Layout";
 import EventCard from "@/components/events/EventCard";
 import EventFilters from "@/components/events/EventFilters";
-import { Skeleton } from "@/components/ui/skeleton";
+import { SkeletonGrid, SkeletonEventCard } from "@/components/ui/skeleton-loader";
+import { AnimatedSection, AnimatedStagger, AnimatedStaggerItem } from "@/components/animated/AnimatedSection";
 import { CalendarDays } from "lucide-react";
 import type { Tables } from "@/integrations/supabase/types";
 
@@ -112,53 +113,52 @@ const Events = () => {
     <Layout>
       <section className="container py-12 space-y-8">
         {/* Header */}
-        <div className="space-y-2">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-events">
-              <CalendarDays className="h-5 w-5 text-primary-foreground" />
+        <AnimatedSection>
+          <div className="space-y-2">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-events">
+                <CalendarDays className="h-5 w-5 text-primary-foreground" />
+              </div>
+              <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+                Events & <span className="text-gradient">Hackathons</span>
+              </h1>
             </div>
-            <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
-              Events & <span className="text-gradient">Hackathons</span>
-            </h1>
+            <p className="text-muted-foreground max-w-2xl">
+              Discover upcoming competitions, workshops, webinars, and meetups. Register and never miss an opportunity.
+            </p>
           </div>
-          <p className="text-muted-foreground max-w-2xl">
-            Discover upcoming competitions, workshops, webinars, and meetups. Register and never miss an opportunity.
-          </p>
-        </div>
+        </AnimatedSection>
 
         {/* Filters */}
-        <EventFilters search={search} onSearchChange={setSearch} activeCategory={category} onCategoryChange={setCategory} />
+        <AnimatedSection delay={0.1}>
+          <EventFilters search={search} onSearchChange={setSearch} activeCategory={category} onCategoryChange={setCategory} />
+        </AnimatedSection>
 
         {/* Grid */}
         {loading ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="space-y-3">
-                <Skeleton className="h-48 w-full rounded-xl" />
-                <Skeleton className="h-5 w-3/4" />
-                <Skeleton className="h-4 w-1/2" />
-              </div>
-            ))}
-          </div>
+          <SkeletonGrid count={6} component={SkeletonEventCard} />
         ) : filtered.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 text-center">
-            <CalendarDays className="h-12 w-12 text-muted-foreground/40 mb-4" />
-            <h3 className="font-display text-xl font-semibold text-foreground">No events found</h3>
-            <p className="text-muted-foreground mt-1">Check back soon for upcoming events!</p>
-          </div>
+          <AnimatedSection>
+            <div className="flex flex-col items-center justify-center py-20 text-center">
+              <CalendarDays className="h-12 w-12 text-muted-foreground/40 mb-4" />
+              <h3 className="font-display text-xl font-semibold text-foreground">No events found</h3>
+              <p className="text-muted-foreground mt-1">Check back soon for upcoming events!</p>
+            </div>
+          </AnimatedSection>
         ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <AnimatedStagger staggerDelay={0.08} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((event) => (
-              <EventCard
-                key={event.id}
-                event={event}
-                onRsvp={handleRsvp}
-                onCancelRsvp={handleCancelRsvp}
-                isAuthenticated={!!user}
-                rsvpLoading={rsvpLoading}
-              />
+              <AnimatedStaggerItem key={event.id}>
+                <EventCard
+                  event={event}
+                  onRsvp={handleRsvp}
+                  onCancelRsvp={handleCancelRsvp}
+                  isAuthenticated={!!user}
+                  rsvpLoading={rsvpLoading}
+                />
+              </AnimatedStaggerItem>
             ))}
-          </div>
+          </AnimatedStagger>
         )}
       </section>
     </Layout>
