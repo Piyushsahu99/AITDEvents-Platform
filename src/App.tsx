@@ -16,6 +16,7 @@ import AdminUsers from "./pages/admin/AdminUsers";
 import Auth from "./pages/Auth";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
+import Profile from "./pages/Profile";
 import {
   Learning, Games, Mentorship,
   Scholarships, Bounties, About, Contact,
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/ambassador" element={<Ambassador />} />
           <Route path="*" element={<NotFound />} />
