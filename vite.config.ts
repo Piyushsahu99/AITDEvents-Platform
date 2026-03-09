@@ -30,6 +30,7 @@ export default defineConfig(() => ({
             if (id.includes("@radix-ui")) return "radix-ui";
             if (id.includes("date-fns")) return "date-fns";
             if (id.includes("lucide-react")) return "icons";
+            if (id.includes("qrcode")) return "qrcode";
             return "vendor";
           }
         },
