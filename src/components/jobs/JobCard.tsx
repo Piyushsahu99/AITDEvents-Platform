@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MapPin, Clock, Banknote, ExternalLink, Building2 } from "lucide-react";
 import { format } from "date-fns";
+import { UniversalShareButton } from "@/components/UniversalShareButton";
 import type { Tables } from "@/integrations/supabase/types";
 
 type Job = Tables<"jobs">;
