@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sparkles, LogOut, UserIcon } from "lucide-react";
+import { Menu, X, Sparkles, LogOut, UserIcon, LayoutDashboard } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
@@ -103,6 +103,11 @@ const Navbar = () => {
                   </>
                 )}
                 <DropdownMenuItem asChild>
+                  <Link to="/dashboard" className="flex items-center gap-2 cursor-pointer">
+                    <LayoutDashboard className="h-4 w-4" /> Dashboard
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
                   <Link to="/profile" className="flex items-center gap-2 cursor-pointer">
                     <UserIcon className="h-4 w-4" /> Profile
                   </Link>
@@ -164,6 +169,10 @@ const Navbar = () => {
               <div className="pt-3 space-y-2">
                 {user ? (
                   <>
+                    <Link to="/dashboard" onClick={() => setMobileOpen(false)}
+                      className="block rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors">
+                      Dashboard
+                    </Link>
                     <Link to="/profile" onClick={() => setMobileOpen(false)}
                       className="block rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors">
                       Profile
