@@ -17,6 +17,8 @@ const links = [
   { label: "Blog Posts", href: "/admin/blog", icon: FileText },
   { label: "Games", href: "/admin/games", icon: Gamepad2 },
   { label: "Users", href: "/admin/users", icon: Users },
+  { label: "Analytics", href: "/admin/analytics", icon: BarChart3 },
+  { label: "Settings", href: "/admin/settings", icon: Settings },
 ];
 
 const AdminSidebar = () => {
