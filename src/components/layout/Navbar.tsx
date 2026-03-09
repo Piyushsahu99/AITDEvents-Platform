@@ -73,14 +73,41 @@ const Navbar = () => {
 
         {/* Desktop actions */}
         <div className="hidden items-center gap-3 md:flex">
-          <Link to="/auth">
-            <Button variant="ghost" size="sm">Sign In</Button>
-          </Link>
-          <Link to="/auth">
-            <Button size="sm" className="bg-gradient-hero text-primary-foreground hover:opacity-90 shadow-elegant">
-              Get Started
-            </Button>
-          </Link>
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="flex items-center gap-2 rounded-full p-1 hover:bg-muted transition-colors">
+                  <Avatar className="h-8 w-8 border border-border">
+                    <AvatarFallback className="bg-primary/10 text-primary text-xs font-bold">
+                      {initials}
+                    </AvatarFallback>
+                  </Avatar>
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuItem asChild>
+                  <Link to="/profile" className="flex items-center gap-2 cursor-pointer">
+                    <UserIcon className="h-4 w-4" /> Profile
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleSignOut} className="flex items-center gap-2 cursor-pointer text-destructive">
+                  <LogOut className="h-4 w-4" /> Sign Out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <>
+              <Link to="/auth">
+                <Button variant="ghost" size="sm">Sign In</Button>
+              </Link>
+              <Link to="/auth">
+                <Button size="sm" className="bg-gradient-hero text-primary-foreground hover:opacity-90 shadow-elegant">
+                  Get Started
+                </Button>
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile menu button */}
