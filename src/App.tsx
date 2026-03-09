@@ -13,6 +13,8 @@ import AdminJobs from "./pages/admin/AdminJobs";
 import AdminBlog from "./pages/admin/AdminBlog";
 import AdminGames from "./pages/admin/AdminGames";
 import AdminUsers from "./pages/admin/AdminUsers";
+import AdminAnalytics from "./pages/admin/AdminAnalytics";
+import AdminSettings from "./pages/admin/AdminSettings";
 import Auth from "./pages/Auth";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
