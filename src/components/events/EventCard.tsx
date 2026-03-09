@@ -3,6 +3,7 @@ import { format, isPast } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { UniversalShareButton } from "@/components/UniversalShareButton";
 import type { Tables } from "@/integrations/supabase/types";
 
 interface EventCardProps {
@@ -83,27 +84,40 @@ const EventCard = ({ event, onRsvp, onCancelRsvp, isAuthenticated, rsvpLoading }
           )}
         </div>
 
-        {/* CTA */}
-        <div className="pt-2">
-          {isEventPast ? (
-            <Button variant="secondary" className="w-full" disabled>Event Ended</Button>
-          ) : event.user_rsvp ? (
-            <Button variant="outline" className="w-full" onClick={() => onCancelRsvp(event.id)} disabled={loading}>
-              {loading ? "Cancelling..." : "Cancel RSVP"}
-            </Button>
-          ) : event.registration_link ? (
-            <Button asChild className="w-full bg-gradient-hero hover:opacity-90">
-              <a href={event.registration_link} target="_blank" rel="noopener noreferrer">Register Now</a>
-            </Button>
-          ) : (
-            <Button
-              className="w-full bg-gradient-hero hover:opacity-90"
-              onClick={() => onRsvp(event.id)}
-              disabled={!isAuthenticated || isFull || loading}
-            >
-              {loading ? "Registering..." : isFull ? "Event Full" : isAuthenticated ? "RSVP Now" : "Sign in to RSVP"}
-            </Button>
-          )}
+        {/* CTA + Share */}
+        <div className="flex items-center gap-2 pt-2">
+          <div className="flex-1">
+            {isEventPast ? (
+              <Button variant="secondary" className="w-full" disabled>Event Ended</Button>
+            ) : event.user_rsvp ? (
+              <Button variant="outline" className="w-full" onClick={() => onCancelRsvp(event.id)} disabled={loading}>
+                {loading ? "Cancelling..." : "Cancel RSVP"}
+              </Button>
+            ) : event.registration_link ? (
+              <Button asChild className="w-full bg-gradient-hero hover:opacity-90">
+                <a href={event.registration_link} target="_blank" rel="noopener noreferrer">Register Now</a>
+              </Button>
+            ) : (
+              <Button
+                className="w-full bg-gradient-hero hover:opacity-90"
+                onClick={() => onRsvp(event.id)}
+                disabled={!isAuthenticated || isFull || loading}
+              >
+                {loading ? "Registering..." : isFull ? "Event Full" : isAuthenticated ? "RSVP Now" : "Sign in to RSVP"}
+              </Button>
+            )}
+          </div>
+          <UniversalShareButton
+            title={event.title}
+            description={event.short_description || ""}
+            url={`${window.location.origin}/events`}
+            type="event"
+            referenceId={event.id}
+            compact
+            variant="outline"
+            showLabel={false}
+            showRewardBadge={false}
+          />
         </div>
       </CardContent>
     </Card>

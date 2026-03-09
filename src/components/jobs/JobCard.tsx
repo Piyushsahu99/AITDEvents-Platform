@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MapPin, Clock, Banknote, ExternalLink, Building2 } from "lucide-react";
 import { format } from "date-fns";
+import { UniversalShareButton } from "@/components/UniversalShareButton";
 import type { Tables } from "@/integrations/supabase/types";
 
 type Job = Tables<"jobs">;
@@ -74,16 +75,27 @@ const JobCard = ({ job }: { job: Job }) => {
         </div>
       )}
 
-      {/* Apply */}
-      {job.apply_link && (
-        <div className="mt-4">
-          <a href={job.apply_link} target="_blank" rel="noopener noreferrer">
+      {/* Apply + Share */}
+      <div className="mt-4 flex items-center gap-2">
+        {job.apply_link && (
+          <a href={job.apply_link} target="_blank" rel="noopener noreferrer" className="flex-1">
             <Button size="sm" className="bg-gradient-cool text-primary-foreground hover:opacity-90 w-full">
               Apply Now <ExternalLink className="h-3.5 w-3.5 ml-1.5" />
             </Button>
           </a>
-        </div>
-      )}
+        )}
+        <UniversalShareButton
+          title={`${job.title} at ${job.company}`}
+          description={job.description || ""}
+          url={`${window.location.origin}/jobs`}
+          type="job"
+          referenceId={job.id}
+          compact
+          variant="outline"
+          showLabel={false}
+          showRewardBadge={false}
+        />
+      </div>
     </div>
   );
 };
