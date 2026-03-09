@@ -50,7 +50,7 @@ const About = () => (
 
         {/* Stats */}
         <AnimatedSection delay={0.1}>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-16">
             {stats.map((stat) => (
               <Card key={stat.label} className="text-center">
                 <CardContent className="pt-6">
