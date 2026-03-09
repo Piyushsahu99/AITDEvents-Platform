@@ -145,9 +145,21 @@ const Navbar = () => {
                 </Link>
               ))}
               <div className="pt-3 space-y-2">
-                <Link to="/auth" onClick={() => setMobileOpen(false)}>
-                  <Button className="w-full bg-gradient-hero text-primary-foreground">Get Started</Button>
-                </Link>
+                {user ? (
+                  <>
+                    <Link to="/profile" onClick={() => setMobileOpen(false)}
+                      className="block rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors">
+                      Profile
+                    </Link>
+                    <Button variant="outline" className="w-full" onClick={() => { setMobileOpen(false); handleSignOut(); }}>
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <Link to="/auth" onClick={() => setMobileOpen(false)}>
+                    <Button className="w-full bg-gradient-hero text-primary-foreground">Get Started</Button>
+                  </Link>
+                )}
               </div>
             </div>
           </motion.div>
