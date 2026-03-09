@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, LogOut, UserIcon, LayoutDashboard } from "lucide-react";
+import { Menu, X, LogOut, UserIcon, LayoutDashboard, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/useAuth";
+import { useTheme } from "@/hooks/useTheme";
 import { supabase } from "@/integrations/supabase/client";
 
 const navLinks = [
@@ -41,6 +42,7 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     if (!user) { setProfileName(null); return; }
@@ -88,7 +90,14 @@ const Navbar = () => {
         </nav>
 
         {/* Desktop actions — visible from lg */}
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-2 lg:flex">
+          <button
+            onClick={toggleTheme}
+            className="flex h-9 w-9 items-center justify-center rounded-lg hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+          </button>
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -187,6 +196,13 @@ const Navbar = () => {
                 About
               </Link>
               <div className="pt-3 space-y-2">
+                <button
+                  onClick={toggleTheme}
+                  className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                >
+                  {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+                  {theme === "light" ? "Dark Mode" : "Light Mode"}
+                </button>
                 {user ? (
                   <>
                     <Link to="/dashboard" onClick={() => setMobileOpen(false)}
