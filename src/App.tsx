@@ -24,6 +24,10 @@ import Learning from "./pages/Learning";
 import GamesPage from "./pages/Games";
 import Mentorship from "./pages/Mentorship";
 import About from "./pages/About";
+import Community from "./pages/Community";
+import CommunityGroup from "./pages/CommunityGroup";
+import CommunityMessages from "./pages/CommunityMessages";
+import CommunityFeed from "./pages/CommunityFeed";
 import {
   Scholarships, Bounties, Contact,
   Leaderboard, Ambassador,
@@ -55,6 +59,10 @@ const App = () => (
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/mentorship" element={<Mentorship />} />
           <Route path="/scholarships" element={<Scholarships />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/community/:id" element={<CommunityGroup />} />
+          <Route path="/community/messages" element={<CommunityMessages />} />
+          <Route path="/community/feed" element={<CommunityFeed />} />
           <Route path="/bounties" element={<Bounties />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
