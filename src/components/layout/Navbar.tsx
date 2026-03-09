@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sparkles, LogOut, UserIcon } from "lucide-react";
@@ -20,12 +20,20 @@ const navLinks = [
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [profileName, setProfileName] = useState<string | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
   const { user } = useAuth();
 
-  const initials = user?.user_metadata?.full_name
-    ? user.user_metadata.full_name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2)
+  useEffect(() => {
+    if (!user) { setProfileName(null); return; }
+    supabase.from("profiles").select("full_name").eq("id", user.id).single()
+      .then(({ data }) => setProfileName(data?.full_name ?? null));
+  }, [user]);
+
+  const displayName = profileName || user?.user_metadata?.full_name || null;
+  const initials = displayName
+    ? displayName.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2)
     : user?.email?.[0]?.toUpperCase() ?? "U";
 
   const handleSignOut = async () => {
@@ -84,7 +92,16 @@ const Navbar = () => {
                   </Avatar>
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuContent align="end" className="w-52">
+                {displayName && (
+                  <>
+                    <div className="px-2 py-1.5">
+                      <p className="text-sm font-medium truncate">{displayName}</p>
+                      <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
+                    </div>
+                    <DropdownMenuSeparator />
+                  </>
+                )}
                 <DropdownMenuItem asChild>
                   <Link to="/profile" className="flex items-center gap-2 cursor-pointer">
                     <UserIcon className="h-4 w-4" /> Profile
