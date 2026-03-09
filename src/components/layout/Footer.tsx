@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Sparkles, Github, Twitter, Linkedin, Mail, Heart } from "lucide-react";
+import { Github, Twitter, Linkedin, Mail, Heart } from "lucide-react";
 
 const footerLinks = {
   Platform: [
@@ -27,17 +27,20 @@ const footerLinks = {
 const Footer = () => {
   return (
     <footer className="border-t border-border bg-muted/30">
-      <div className="container py-16">
+      <div className="container py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-hero">
-                <Sparkles className="h-5 w-5 text-primary-foreground" />
+            <Link to="/" className="flex items-center gap-2.5 mb-4 group">
+              <div className="relative flex h-10 w-10 items-center justify-center">
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary via-accent to-primary-glow rotate-6 opacity-80" />
+                <div className="absolute inset-0 rounded-xl bg-gradient-hero" />
+                <span className="relative font-display text-base font-black text-primary-foreground tracking-tighter leading-none">A</span>
               </div>
-              <span className="font-display text-xl font-bold tracking-tight">
-                AITD Events
-              </span>
+              <div className="flex flex-col leading-none">
+                <span className="font-display text-xl font-extrabold tracking-tight">AITD</span>
+                <span className="text-gradient font-display text-xs font-bold tracking-widest uppercase">Events</span>
+              </div>
             </Link>
             <p className="text-sm text-muted-foreground max-w-sm mb-6 leading-relaxed">
               India's largest student opportunity hub. Connecting students with career-defining hackathons, internships, jobs, scholarships, and mentorship.
@@ -76,7 +79,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
+        <div className="mt-10 sm:mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} AITD Events. All rights reserved.
           </p>
