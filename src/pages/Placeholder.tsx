@@ -22,7 +22,6 @@ const PlaceholderPage = ({ title, description }: PlaceholderPageProps) => (
 
 export const Learning = () => <PlaceholderPage title="Learning Hub" description="200+ courses, study materials, and practice resources. Coming soon!" />;
 export const Games = () => <PlaceholderPage title="Interactive Games" description="IPL Auction, quizzes, and more. Earn coins while having fun! Coming soon!" />;
-export const Blog = () => <PlaceholderPage title="Blog & Community" description="Share knowledge, engage in discussions, and grow together. Coming soon!" />;
 export const Mentorship = () => <PlaceholderPage title="Mentorship" description="Connect with 100+ industry mentors for career guidance. Coming soon!" />;
 export const Scholarships = () => <PlaceholderPage title="Scholarships" description="Financial aid opportunities for students. Coming soon!" />;
 export const Bounties = () => <PlaceholderPage title="Bounties & Rewards" description="Solve technical challenges and earn rewards. Coming soon!" />;
