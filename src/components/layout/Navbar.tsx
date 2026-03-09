@@ -14,9 +14,9 @@ const navLinks = [
   { label: "Events", href: "/events" },
   { label: "Jobs", href: "/jobs" },
   { label: "Learning", href: "/learning" },
+  { label: "Community", href: "/community" },
   { label: "Games", href: "/games" },
   { label: "Blog", href: "/blog" },
-  { label: "Mentorship", href: "/mentorship" },
 ];
 
 const Logo = () => (

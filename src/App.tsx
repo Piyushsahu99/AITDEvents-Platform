@@ -59,6 +59,10 @@ const App = () => (
           <Route path="/blog/:slug" element={<BlogDetail />} />
           <Route path="/mentorship" element={<Mentorship />} />
           <Route path="/scholarships" element={<Scholarships />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/community/:id" element={<CommunityGroup />} />
+          <Route path="/community/messages" element={<CommunityMessages />} />
+          <Route path="/community/feed" element={<CommunityFeed />} />
           <Route path="/bounties" element={<Bounties />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
