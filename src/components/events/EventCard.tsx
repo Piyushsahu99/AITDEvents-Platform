@@ -3,6 +3,7 @@ import { format, isPast } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { UniversalShareButton } from "@/components/UniversalShareButton";
 import type { Tables } from "@/integrations/supabase/types";
 
 interface EventCardProps {
