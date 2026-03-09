@@ -90,7 +90,14 @@ const Navbar = () => {
         </nav>
 
         {/* Desktop actions — visible from lg */}
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-2 lg:flex">
+          <button
+            onClick={toggleTheme}
+            className="flex h-9 w-9 items-center justify-center rounded-lg hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+          </button>
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
