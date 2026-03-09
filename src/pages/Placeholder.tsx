@@ -20,13 +20,8 @@ const PlaceholderPage = ({ title, description }: PlaceholderPageProps) => (
 
 
 
-export const Learning = () => <PlaceholderPage title="Learning Hub" description="200+ courses, study materials, and practice resources. Coming soon!" />;
-export const Games = () => <PlaceholderPage title="Interactive Games" description="IPL Auction, quizzes, and more. Earn coins while having fun! Coming soon!" />;
-export const Mentorship = () => <PlaceholderPage title="Mentorship" description="Connect with 100+ industry mentors for career guidance. Coming soon!" />;
 export const Scholarships = () => <PlaceholderPage title="Scholarships" description="Financial aid opportunities for students. Coming soon!" />;
 export const Bounties = () => <PlaceholderPage title="Bounties & Rewards" description="Solve technical challenges and earn rewards. Coming soon!" />;
-export const About = () => <PlaceholderPage title="About AITD Events" description="India's largest student opportunity hub. Coming soon!" />;
 export const Contact = () => <PlaceholderPage title="Contact Us" description="Get in touch with the AITD Events team. Coming soon!" />;
-
 export const Leaderboard = () => <PlaceholderPage title="Leaderboard" description="Compete and climb the global rankings. Coming soon!" />;
 export const Ambassador = () => <PlaceholderPage title="Campus Ambassador" description="Join the ambassador program and lead on campus. Coming soon!" />;
