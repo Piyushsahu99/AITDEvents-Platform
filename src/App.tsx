@@ -13,6 +13,8 @@ import AdminJobs from "./pages/admin/AdminJobs";
 import AdminBlog from "./pages/admin/AdminBlog";
 import AdminGames from "./pages/admin/AdminGames";
 import AdminUsers from "./pages/admin/AdminUsers";
+import AdminAnalytics from "./pages/admin/AdminAnalytics";
+import AdminSettings from "./pages/admin/AdminSettings";
 import Auth from "./pages/Auth";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
@@ -44,6 +46,8 @@ const App = () => (
           <Route path="/admin/blog" element={<AdminBlog />} />
           <Route path="/admin/games" element={<AdminGames />} />
           <Route path="/admin/users" element={<AdminUsers />} />
+          <Route path="/admin/analytics" element={<AdminAnalytics />} />
+          <Route path="/admin/settings" element={<AdminSettings />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/learning" element={<Learning />} />
           <Route path="/games" element={<GamesPage />} />
