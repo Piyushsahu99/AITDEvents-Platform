@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Progress } from "@/components/ui/progress";
 import {
-  Coins, Trophy, TrendingUp, Zap, Star, Target, Award,
+  Coins, Trophy, TrendingUp, Zap, Star, Target, Award, Sparkles,
   Calendar, Briefcase, BookOpen, Gamepad2, MessageCircle,
   ArrowRight, Flame, Crown, Medal, Loader2
 } from "lucide-react";
