@@ -17,6 +17,7 @@ import Auth from "./pages/Auth";
 import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import Profile from "./pages/Profile";
+import Dashboard from "./pages/Dashboard";
 import Learning from "./pages/Learning";
 import GamesPage from "./pages/Games";
 import Mentorship from "./pages/Mentorship";
