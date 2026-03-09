@@ -15,6 +15,7 @@ import AdminGames from "./pages/admin/AdminGames";
 import AdminUsers from "./pages/admin/AdminUsers";
 import Auth from "./pages/Auth";
 import Blog from "./pages/Blog";
+import BlogDetail from "./pages/BlogDetail";
 import {
   Learning, Games, Mentorship,
   Scholarships, Bounties, About, Contact,
