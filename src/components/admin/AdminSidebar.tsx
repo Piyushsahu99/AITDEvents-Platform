@@ -6,6 +6,8 @@ import {
   FileText,
   Users,
   Gamepad2,
+  BarChart3,
+  Settings,
   ArrowLeft,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
