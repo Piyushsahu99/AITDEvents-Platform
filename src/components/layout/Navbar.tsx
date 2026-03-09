@@ -169,6 +169,10 @@ const Navbar = () => {
               <div className="pt-3 space-y-2">
                 {user ? (
                   <>
+                    <Link to="/dashboard" onClick={() => setMobileOpen(false)}
+                      className="block rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors">
+                      Dashboard
+                    </Link>
                     <Link to="/profile" onClick={() => setMobileOpen(false)}
                       className="block rounded-lg px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground transition-colors">
                       Profile
