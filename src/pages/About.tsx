@@ -65,7 +65,7 @@ const About = () => (
 
         {/* Mission */}
         <AnimatedSection delay={0.15}>
-          <div className="grid md:grid-cols-2 gap-10 items-center mb-16">
+          <div className="grid gap-8 md:gap-10 md:grid-cols-2 items-center mb-16">
             <div>
               <Badge className="mb-3 bg-amber-500/10 text-amber-600 border-amber-500/20">
                 <Target className="h-3 w-3 mr-1" /> Our Mission
